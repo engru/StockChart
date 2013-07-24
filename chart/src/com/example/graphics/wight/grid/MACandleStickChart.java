@@ -169,8 +169,7 @@ public class MACandleStickChart extends CandleStickChart {
 					for (int j = 0; j < lineData.size(); j++) {
 						float value = lineData.get(j).floatValue();
 						// calculate Y
-						float valueY = (float) ((1f - (value - super
-								.getMinValue())
+						float valueY = (float) ((1f - (value - super.getMinValue())
 								/ (super.getMaxValue() - super.getMinValue())) * (super
 								.getHeight() - super.getAxisMarginBottom()));
 

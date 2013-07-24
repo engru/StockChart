@@ -13,13 +13,13 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 
 import com.example.graphics.MyView;
-import com.example.graphics.coverage.entity.Data;
-import com.example.graphics.coverage.entity.DataAdapter;
-import com.example.graphics.coverage.entity.Entity;
-import com.example.graphics.coverage.entity.ExtendData;
-import com.example.graphics.coverage.entity.StockData;
-import com.example.graphics.coverage.entity.StockDataAdapter;
-import com.example.graphics.coverage.group.StockGroup;
+import com.example.graphics.layers.entity.Data;
+import com.example.graphics.layers.entity.DataAdapter;
+import com.example.graphics.layers.entity.Entity;
+import com.example.graphics.layers.entity.ExtendData;
+import com.example.graphics.layers.entity.StockData;
+import com.example.graphics.layers.entity.StockDataAdapter;
+import com.example.graphics.layers.group.StockGroup;
 import com.example.graphics.wight.entity.LineEntity;
 import com.example.graphics.wight.entity.OHLCEntity;
 import com.example.graphics.wight.grid.CandleStickChart;
@@ -54,13 +54,111 @@ public class MainActivity extends Activity {
 		//addContentView(view, params);
 		initEntity();
 		initSample();
+		new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				mhandler.sendEmptyMessage(100);
+			}
+			
+		}).start();
 	}
 	
 	List<Entity> lentity = new ArrayList<Entity>();
 	private void initEntity(){
         List<Entity> ohlc = new ArrayList<Entity>();
-        
+        for(int j=0;j<100;j++){
        // this.ohlc = new ArrayList<Entity>();
+        	double i= j*j;
+        	if(j<50){
+        		i = j*j/2;
+        	}else{
+        		i = (100-j)*(100-j)/2;
+        	}
+        	 ohlc.add(new Entity(246+i ,248+i ,235+i ,235+i ,20110825));
+             ohlc.add(new Entity(240+i ,242+i ,236+i ,242+i ,20110824));
+             ohlc.add(new Entity(236+i ,240+i ,235+i ,240+i ,20110823));
+             ohlc.add(new Entity(232+i ,236+i ,231+i ,236+i ,20110822));
+             ohlc.add(new Entity(240+i ,240+i ,235+i ,235+i ,20110819));
+             ohlc.add(new Entity(240+i ,241+i ,239+i ,240+i ,20110818));
+             ohlc.add(new Entity(242+i ,243+i ,240+i ,240+i ,20110817));
+             ohlc.add(new Entity(239+i ,242+i ,238+i ,242+i ,20110816));
+             ohlc.add(new Entity(239+i ,240+i ,238+i ,239+i ,20110815));
+             ohlc.add(new Entity(230+i ,238+i ,230+i ,238+i ,20110812));
+             ohlc.add(new Entity(236+i ,237+i ,234+i ,234+i ,20110811));
+             ohlc.add(new Entity(226+i ,233+i ,223+i ,232+i ,20110810));
+             ohlc.add(new Entity(239+i ,241+i ,229+i ,232+i ,20110809));
+             ohlc.add(new Entity(242+i ,244+i ,240+i ,242+i ,20110808));
+             ohlc.add(new Entity(248+i ,249+i ,247+i ,248+i ,20110805));
+             ohlc.add(new Entity(245+i ,248+i ,245+i ,247+i ,20110804));
+             ohlc.add(new Entity(249+i ,249+i ,245+i ,247+i ,20110803));
+             ohlc.add(new Entity(249+i ,251+i ,248+i ,250+i ,20110802));
+             ohlc.add(new Entity(250+i ,252+i ,248+i ,250+i ,20110801));
+             ohlc.add(new Entity(250+i ,251+i ,248+i ,250+i ,20110729));
+             ohlc.add(new Entity(249+i ,252+i ,248+i ,252+i ,20110728));
+             ohlc.add(new Entity(248+i ,250+i ,247+i ,250+i ,20110727));
+             ohlc.add(new Entity(256+i ,256+i ,248+i ,248+i ,20110726));
+             ohlc.add(new Entity(257+i ,258+i ,256+i ,257+i ,20110725));
+             ohlc.add(new Entity(259+i ,260+i ,256+i ,256+i ,20110722));
+             ohlc.add(new Entity(261+i ,261+i ,257+i ,259+i ,20110721));
+             ohlc.add(new Entity(260+i ,260+i ,259+i ,259+i ,20110720));
+             ohlc.add(new Entity(262+i ,262+i ,260+i ,261+i ,20110719));
+             ohlc.add(new Entity(260+i ,262+i ,259+i ,262+i ,20110718));
+             ohlc.add(new Entity(259+i ,261+i ,258+i ,261+i ,20110715));
+             ohlc.add(new Entity(255+i ,259+i ,255+i ,259+i ,20110714));
+             ohlc.add(new Entity(258+i ,258+i ,255+i ,255+i ,20110713));
+             ohlc.add(new Entity(258+i ,260+i ,258+i ,260+i ,20110712));
+             ohlc.add(new Entity(259+i ,260+i ,258+i ,259+i ,20110711));
+             ohlc.add(new Entity(261+i ,262+i ,259+i ,259+i ,20110708));
+             ohlc.add(new Entity(261+i ,261+i ,258+i ,261+i ,20110707));
+             ohlc.add(new Entity(261+i ,261+i ,259+i ,261+i ,20110706));
+             ohlc.add(new Entity(257+i ,261+i ,257+i ,261+i ,20110705));
+             ohlc.add(new Entity(256+i ,257+i ,255+i ,255+i ,20110704));
+             ohlc.add(new Entity(253+i ,257+i ,253+i ,256+i ,20110701));
+             ohlc.add(new Entity(255+i ,255+i ,252+i ,252+i ,20110630));
+             ohlc.add(new Entity(256+i ,256+i ,253+i ,255+i ,20110629));
+             ohlc.add(new Entity(254+i ,256+i ,254+i ,255+i ,20110628));
+             ohlc.add(new Entity(247+i ,256+i ,247+i ,254+i ,20110627));
+             ohlc.add(new Entity(244+i ,249+i ,243+i ,248+i ,20110624));
+             ohlc.add(new Entity(244+i ,245+i ,243+i ,244+i ,20110623));
+             ohlc.add(new Entity(242+i ,244+i ,241+i ,244+i ,20110622));
+             ohlc.add(new Entity(243+i ,243+i ,241+i ,242+i ,20110621));
+             ohlc.add(new Entity(246+i ,247+i ,244+i ,244+i ,20110620));
+             ohlc.add(new Entity(248+i ,249+i ,246+i ,246+i ,20110617));
+             ohlc.add(new Entity(251+i ,253+i ,250+i ,250+i ,20110616));
+             ohlc.add(new Entity(249+i ,253+i ,249+i ,253+i ,20110615));
+             ohlc.add(new Entity(248+i ,250+i ,246+i ,250+i ,20110614));
+             ohlc.add(new Entity(249+i ,250+i ,247+i ,250+i ,20110613));
+             ohlc.add(new Entity(254+i ,254+i ,250+i ,250+i ,20110610));
+             ohlc.add(new Entity(254+i ,255+i ,251+i ,255+i ,20110609));
+             ohlc.add(new Entity(252+i ,254+i ,251+i ,254+i ,20110608));
+             ohlc.add(new Entity(250+i ,253+i ,250+i ,252+i ,20110607));
+             ohlc.add(new Entity(251+i ,252+i ,247+i ,250+i ,20110603));
+             ohlc.add(new Entity(253+i ,254+i ,252+i ,254+i ,20110602));
+             ohlc.add(new Entity(250+i ,254+i ,250+i ,254+i ,20110601));
+             ohlc.add(new Entity(250+i ,252+i ,248+i ,250+i ,20110531));
+             ohlc.add(new Entity(253+i ,254+i ,250+i ,251+i ,20110530));
+             ohlc.add(new Entity(255+i ,256+i ,253+i ,253+i ,20110527));
+             ohlc.add(new Entity(256+i ,257+i ,253+i ,254+i ,20110526));
+             ohlc.add(new Entity(256+i ,257+i ,254+i ,256+i ,20110525));
+             ohlc.add(new Entity(265+i ,265+i ,257+i ,257+i ,20110524));
+             ohlc.add(new Entity(265+i ,266+i ,265+i ,265+i ,20110523));
+             ohlc.add(new Entity(267+i ,268+i ,265+i ,266+i ,20110520));
+             ohlc.add(new Entity(264+i ,267+i ,264+i ,267+i ,20110519));
+             ohlc.add(new Entity(264+i ,266+i ,262+i ,265+i ,20110518));
+             ohlc.add(new Entity(266+i ,267+i ,264+i ,264+i ,20110517));
+             ohlc.add(new Entity(264+i ,267+i ,263+i ,267+i ,20110516));
+             ohlc.add(new Entity(266+i ,267+i ,264+i ,264+i ,20110513));
+             ohlc.add(new Entity(269+i ,269+i ,266+i ,268+i ,20110512));
+             ohlc.add(new Entity(267+i ,269+i ,266+i ,269+i ,20110511));
+             ohlc.add(new Entity(266+i ,268+i ,266+i ,267+i ,20110510));
+             ohlc.add(new Entity(264+i ,268+i ,263+i ,266+i ,20110509));
+             ohlc.add(new Entity(265+i ,268+i ,265+i ,267+i ,20110506));
+             ohlc.add(new Entity(271+i ,271+i ,266+i ,266+i ,20110505));
+             ohlc.add(new Entity(271+i ,273+i ,269+i ,273+i ,20110504));
+             ohlc.add(new Entity(268+i ,271+i ,267+i ,271+i ,20110503));
+        	/*
         ohlc.add(new Entity(246 ,248 ,235 ,235 ,20110825));
         ohlc.add(new Entity(240 ,242 ,236 ,242 ,20110824));
         ohlc.add(new Entity(236 ,240 ,235 ,240 ,20110823));
@@ -143,6 +241,8 @@ public class MainActivity extends Activity {
         ohlc.add(new Entity(271 ,271 ,266 ,266 ,20110505));
         ohlc.add(new Entity(271 ,273 ,269 ,273 ,20110504));
         ohlc.add(new Entity(268 ,271 ,267 ,271 ,20110503));
+        */
+        }
         this.lentity = ohlc;
 	}
 	
@@ -218,7 +318,7 @@ public class MainActivity extends Activity {
 		private void update() {
 			//adapter.addData(data1);
 			//adapter.addEntity(entity);
-			for(int i=0;i<10;i++)
+			for(int i=0;i<1;i++)
 			adapter.addEntityAll(lentity);
 			lock--;
 			adapter.update();
